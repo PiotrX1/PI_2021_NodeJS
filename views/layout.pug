@@ -1,0 +1,38 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/css/bootstrap.css')
+    meta(http-equiv="Content-Type", content="text/html;charset=UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+  body
+    nav(class='navbar navbar-expand-sm navbar-dark bg-dark')
+      div(class='container')
+        div(class='navbar-brand')
+          a(href="/", class="navbar-brand") Przepisy kulinarne
+        button(class='navbar-toggler', data-bs-toggle='collapse' data-bs-target='#navbarNav' aria-controls='navbarNav' aria-expanded="false" aria-label='Toggle navigation')
+          span(class='navbar-toggler-icon')
+        div(class='collapse navbar-collapse', id='navbarNav')
+        ul(class='navbar-nav')
+          if session.User
+            li(class='nav-item')
+              a(class='nav-link', href='/Recipes/Add') Dodaj przepis
+
+
+            li(class='nav-item')
+              a(class='nav-link', href='/Account/Logout') Wyloguj    
+          else 
+            li(class='nav-item')
+              a(class='nav-link', href='/Account/Login') Logowanie
+            li(class='nav-item')
+              a(class='nav-link', href='/Account/Register') Rejestracja
+    div(class='container')
+      block content
+
+
+    script(src="/js/bootstrap.js")
+
+
+    footer
+      span Piotr Kowalczyk Z609

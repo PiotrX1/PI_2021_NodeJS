@@ -1,0 +1,44 @@
+extends layout
+
+block content
+	h2= title
+
+	h4 Filtry
+	form(method="get")
+		div(class="container")
+			div(class="row")
+				div(class="mb-3 col-4")
+					label(for="type", class="form-label") Rodzaj
+					select(type="text", class="form-control", id="type", name="type")
+						option(value="0", selected="selected") --
+						each val in types
+							option(value=val.Id) #{val.Name}
+				div(class="mb-3 col-4")
+					label(for="difficulty", class="form-label") Trudność
+					select(type="text", class="form-control", id="difficulty", name="difficulty")
+						option(value="0", selected="selected") Wszystkie
+						each val in [1,2,3,4,5]
+							option(value=val) #{val}
+				div(class="mb-3 col-4")
+					label(for="author", class="form-label") Autor
+					input(type="text", class="form-control", id="author", name="author")
+			button(type="submit", class="btn btn-dark") Filtruj
+
+	table(class="table table-hover")
+		thead
+			tr(class="d-flex")
+				th(class="col-3") Zdjęcie
+				th(class="col") Nazwa 
+				th(class="col") Rodzaj
+				th(class="col") Autor
+				th(class="col") Trudność
+		tbody
+			each val in recipes
+					tr(class="d-flex", onclick="window.location.href='/Recipes/"+val.Id + "';")
+						td(class="col-3 ")
+							img(src=val.Image, alt="", class="recipe_img")
+						td(class="col") #{val.Title} 
+						td(class="col") #{val.TypeName} 
+						td(class="col") #{val.Username}
+						td(class="col") #{val.Difficulty}/5
+	

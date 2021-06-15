@@ -1,0 +1,24 @@
+extends layout 
+
+block content
+	h1= title
+	if info
+		div(class="alert alert-info", role="alert")= info
+		
+	if error
+		div(class="alert alert-danger", role="alert")= error
+	form(method="post")
+		div(class="mb-3")
+			label(for="username", class="form-label") Nazwa użytkownika
+			input(type="text", class="form-control", id="username", name="username")
+		div(class="mb-3")
+			label(for="email", class="form-label") Adres email
+			input(type="email", class="form-control", id="email", name="email")
+		div(class="mb-3")
+			label(for="password", class="form-label") Hasło
+			input(type="password", class="form-control", id="password", name="password")
+		div(class="mb-3")
+			label(for="password2", class="form-label") Powtórz hasło
+			input(type="password", class="form-control", id="password2", name="password2")
+
+		<button type="submit" class="btn btn-primary">Zarejestruj</button>

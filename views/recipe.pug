@@ -1,0 +1,29 @@
+extends layout
+
+block content
+	if session.User && session.User.Admin == 1
+		a(href=recipe.Id + "/DeleteRecipe") Usuń przepis
+	h2= title
+	img(src=recipe.Image, alt="", class="img-fluid recipe_big")
+	h3 Składniki
+	div(class="recipe") #{recipe.Ingredients}
+	h3 Jak wykonać?
+	div(class="recipe") #{recipe.Text}
+	h3 Komentarze
+	each val in comments
+		div(class="border p-3")
+			strong #{val.Username}
+			div #{val.Text}
+			if session.User && session.User.Admin == 1
+				a(href=recipe.Id + "/Del/"+val.Id) Usuń komentarz
+
+
+	if session.User 
+		h4 Dodaj komentarz
+		form(method="post")
+			div(class="mb-3")
+				label(for="text", class="form-label") Komentarz
+				textarea(type="text", class="form-control", id="text", name="text")
+			button(type="submit", class="btn btn-dark") Dodaj
+	else 
+		div Zaloguj się, aby dodawać komentarze

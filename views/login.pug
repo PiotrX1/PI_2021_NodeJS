@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1= title
+  if error
+    div(class="alert alert-danger", role="alert")= error
+  div(class="m-5")
+    span Login: admin
+    br
+    span Hasło: 12345678
+    br
+    span Login: user
+    br
+    span Hasło: 12345678
+  form(method="post")
+    div(class="mb-3")
+      label(for="username", class="form-label") Nazwa użytkownika
+      input(type="text", class="form-control", id="username", name="username")
+    div(class="mb-3")
+      label(for="password", class="form-label") Hasło
+      input(type="password", class="form-control", id="password", name="password")
+
+    button(type="submit", class="btn btn-primary") Zaloguj

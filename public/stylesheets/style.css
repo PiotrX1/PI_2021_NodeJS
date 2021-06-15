@@ -1,0 +1,24 @@
+img.recipe_img
+{
+
+	width: 300px;
+}
+h3,h4 {
+	margin-top: 20px !important; 
+}
+div.recipe
+{
+	white-space: pre-wrap;
+}
+footer{
+	height: 200px;
+	line-height: 200px;
+	background-color: #333333;
+	margin-top: 20px;
+	color: white;
+	text-align: center;
+}
+img.recipe_big
+{
+	max-height: 500px !important;
+}
